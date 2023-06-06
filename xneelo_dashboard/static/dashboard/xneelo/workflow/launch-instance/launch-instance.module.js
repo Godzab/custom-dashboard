@@ -15,7 +15,6 @@
  */
 (function () {
   'use strict';
-
   angular
     .module('horizon.dashboard.xneelo.workflow.launch-instance', [])
     .config(config)

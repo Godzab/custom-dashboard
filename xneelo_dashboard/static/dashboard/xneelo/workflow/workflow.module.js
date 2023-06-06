@@ -25,6 +25,6 @@
    */
   angular
     .module('horizon.dashboard.xneelo.workflow', [
-      'horizon.dashboard.project.xneelo.launch-instance'
+      'horizon.dashboard.xneelo.workflow.launch-instance'
     ]);
 })();
