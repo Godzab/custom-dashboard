@@ -10,16 +10,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.utils.translation import ugettext_lazy as _
+from openstack_dashboard.dashboards.project.instances.workflows.\
+    resize_instance import ResizeInstance
+from openstack_dashboard.dashboards.project.instances.workflows.\
+    update_instance import UpdateInstance
+from openstack_dashboard.dashboards.project.instances.workflows.\
+    update_port import UpdatePort
 
-ADD_INSTALLED_APPS = ['xneelo_dashboard']
-
-ADD_ANGULAR_MODULES = [
-    'horizon.dashboard.xneelo'
+__all__ = [
+    'ResizeInstance',
+    'UpdateInstance',
+    'UpdatePort',
 ]
-
-ADD_JS_FILES = [
-    'horizon/lib/angular/angular-route.js'
-]
-
-AUTO_DISCOVER_STATIC_FILES = True

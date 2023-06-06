@@ -1,3 +1,5 @@
+# Copyright 2012 Nebula, Inc.
+#
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
 #    a copy of the License at
@@ -10,16 +12,12 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
-ADD_INSTALLED_APPS = ['xneelo_dashboard']
+import horizon
 
-ADD_ANGULAR_MODULES = [
-    'horizon.dashboard.xneelo'
-]
 
-ADD_JS_FILES = [
-    'horizon/lib/angular/angular-route.js'
-]
-
-AUTO_DISCOVER_STATIC_FILES = True
+class Instances(horizon.Panel):
+    name = _("Xneelo Instances")
+    slug = 'instances'
+    permissions = ('openstack.services.compute',)

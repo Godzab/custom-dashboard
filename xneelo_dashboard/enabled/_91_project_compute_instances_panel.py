@@ -10,16 +10,12 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.utils.translation import ugettext_lazy as _
+# The slug of the panel to be added to HORIZON_CONFIG. Required.
+PANEL = 'instances'
+# The slug of the panel group the PANEL is associated with.
+PANEL_GROUP = 'compute'
+# The slug of the dashboard the PANEL associated with. Required.
+PANEL_DASHBOARD = 'project'
 
-ADD_INSTALLED_APPS = ['xneelo_dashboard']
-
-ADD_ANGULAR_MODULES = [
-    'horizon.dashboard.xneelo'
-]
-
-ADD_JS_FILES = [
-    'horizon/lib/angular/angular-route.js'
-]
-
-AUTO_DISCOVER_STATIC_FILES = True
+# Python panel class of the PANEL to be added.
+ADD_PANEL = 'xneelo_dashboard.content.instances.panel.Instances'
