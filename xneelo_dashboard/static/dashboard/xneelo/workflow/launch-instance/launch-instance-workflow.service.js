@@ -28,7 +28,7 @@
 
   function launchInstanceWorkflow(basePath, stepPolicy, dashboardWorkflow) {
     return dashboardWorkflow({
-      title: gettext('Launch Instance'),
+      title: gettext('Launch Instance(s)'),
 
       steps: [
         {

@@ -203,7 +203,7 @@
      * @param {Boolean} setting The requires_keypair setting
      */
     function setKeypairRequired(setting) {
-      ctrl.isKeypairRequired = setting ? 1 : 0;
+      ctrl.isKeypairRequired = 1
     }
 
     function setAdminPasswordChange() {
