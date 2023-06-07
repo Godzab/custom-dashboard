@@ -3,12 +3,12 @@
   "description": "Xneelo Dashboard JavaScript tests",
   "repository": {
     "type": "git",
-    "url": "https://opendev.org/openstack/xneelo-dashboard"
+    "url": "https://gitlab.host-h.net/stratus/horizon/xneelo-dashboard-plugin"
   },
   "version": "0.0.0",
   "private": true,
   "license": "Apache 2.0",
-  "author": "Openstack <openstack-discuss@lists.openstack.org>",
+  "author": "Stratus <stratus@xneelo.com>",
   "devDependencies": {
     "eslint": "3.19.x",
     "eslint-config-openstack": "^4.0.1",

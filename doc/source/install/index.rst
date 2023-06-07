@@ -2,52 +2,26 @@
 Installation
 ============
 
-Enabling in DevStack
---------------------
-
-Add this repo as an external repository into your ``local.conf`` file::
-
-    [[local|localrc]]
-    enable_plugin xneelo_dashboard https://github.com/openstack/xneelo-dashboard
-
 Manual Installation
 -------------------
 
-Begin by cloning the Horizon and Xneelo Dashboard repositories::
+Begin by cloning the Xneelo Dashboard repositories::
 
-    git clone https://github.com/openstack/horizon
-    git clone https://github.com/openstack/xneelo-dashboard
-
-Create a virtual environment and install Horizon dependencies::
-
-    cd horizon
-    python tools/install_venv.py
-
-Set up your ``local_settings.py`` file::
-
-    cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py
-
-Open up the copied ``local_settings.py`` file in your preferred text
-editor. You will want to customize several settings:
-
--  ``OPENSTACK_HOST`` should be configured with the hostname of your
-   OpenStack server. Verify that the ``OPENSTACK_KEYSTONE_URL`` and
-   ``OPENSTACK_KEYSTONE_DEFAULT_ROLE`` settings are correct for your
-   environment. (They should be correct unless you modified your
-   OpenStack server to change them.)
+    git clone <repo_url>/xneelo-dashboard && cd xneelo-dashboard
 
 Install Xneelo Dashboard with all dependencies in your virtual environment::
 
-    tools/with_venv.sh pip install -e ../xneelo-dashboard/
+    tools/with_venv.sh pip install -e ./xneelo_dashboard
 
 And enable it in Horizon::
 
-    ln -s ../xneelo-dashboard/xneelo_dashboard/enabled/_90_project_compute_panelgroup.py openstack_dashboard/local/enabled
-    ln -s ../xneelo-dashboard/xneelo_dashboard/enabled/_91_project_compute_instancess_panel.py openstack_dashboard/local/enabled
+    ln -s ../xneelo-dashboard/xneelo_dashboard/enabled/_90_xneelo_angular_overrides.py horizon/openstack_dashboard/local/enabled
+    Or
+    cp -rv ../xneelo-dashboard/xneelo_dashboard/enabled/_90_xneelo_angular_overrides.py horizon/openstack_dashboard/local/enabled
 
 To run horizon with the newly enabled Xneelo Dashboard plugin run::
 
-    ./run_tests.sh --runserver 0.0.0.0:8080
-
-to have the application start on port 8080 and the horizon dashboard will be
-available in your browser at http://localhost:8080/
+    cd <horizon_folder>
+    python manage.py collectstatic --noinput
+    python manage.py compress --force
+    systemctl restart apache2 # or nginx (depending on your installation)
